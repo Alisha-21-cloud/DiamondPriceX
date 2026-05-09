@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiamondPriceX</title>
+    <style>
+        /* ── Hero ── */
+        .hero-section {
+            background-color: #f8f9fa;
+            padding: 100px 0;
+        }
+
+        .hero-heading {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-sub {
+            color: #555;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            max-width: 540px;
+            margin-top: 1.25rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            background-color: #111;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.25s, box-shadow 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-hero-primary:hover {
+            background-color: #333;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-hero-secondary {
+            background-color: transparent;
+            color: #111;
+            border: 1.5px solid #ccc;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: border-color 0.25s, background-color 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-hero-secondary:hover {
+            border-color: #111;
+            background-color: #f0f0f0;
+            color: #111;
+        }
+
+        /* ── Image Card ── */
+        .hero-image-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-10px); }
+        }
+
+        /* ── Features ── */
+        .features-section {
+            background-color: #fff;
+            padding: 90px 0;
+        }
+
+        .features-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 36px 28px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 36px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h5 {
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ── Minimal Footer ── */
+        .mini-footer {
+            background-color: #f8f9fa;
+            padding: 28px 0;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 991.98px) {
+            .hero-section { padding: 60px 0; }
+            .hero-heading { font-size: 2.25rem; }
+            .hero-image-card { margin-top: 48px; }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-heading { font-size: 1.85rem; }
+            .hero-sub { font-size: 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <!-- ════════ HERO ════════ -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+
+                <!-- Left – Text -->
+                <div class="col-lg-6">
+                    <h1 class="hero-heading">
+                        AI-Powered Diamond<br>
+                        Price Prediction,<br>
+                        Built for Smart Investors
+                    </h1>
+                    <p class="hero-sub">
+                        DiamondPriceX leverages advanced machine learning to predict diamond
+                        prices with precision. Analyze cut, clarity, carat, and color to make
+                        confident, data-driven decisions in seconds.
+                    </p>
+                    <div class="hero-buttons">
+                        {% if session.get('logged') %}
+                        <a href="/predict" class="btn-hero-primary">Predict</a>
+                        {% else %}
+                        <a href="/login" class="btn-hero-primary">Get Started</a>
+                        {% endif %}
+                        <a href="/about" class="btn-hero-secondary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Right – Image Card -->
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div class="hero-image-card">
+                        <img src="../static/images/bg/bg.jpg" alt="Diamond showcase">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ FEATURES ════════ -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="features-heading text-center mb-5">Why Choose DiamondPriceX?</h2>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#eef2ff;color:#4f46e5;">
+                            <ion-icon name="analytics-outline"></ion-icon>
+                        </div>
+                        <h5>Accurate Predictions</h5>
+                        <p>
+                            Our machine-learning models are trained on thousands of real-world
+                            transactions, delivering price estimates you can trust with
+                            industry-leading accuracy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#fef3c7;color:#d97706;">
+                            <ion-icon name="diamond-outline"></ion-icon>
+                        </div>
+                        <h5>Data-Driven Insights</h5>
+                        <p>
+                            Go beyond a single number. Explore how cut, clarity, carat weight,
+                            and color each influence the final valuation of every diamond.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#ecfdf5;color:#059669;">
+                            <ion-icon name="flash-outline"></ion-icon>
+                        </div>
+                        <h5>Fast &amp; Reliable</h5>
+                        <p>
+                            Get instant predictions anytime, anywhere. Our lightweight engine
+                            returns results in milliseconds so you never miss an opportunity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>

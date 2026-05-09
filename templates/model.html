@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Models | DiamondPriceX</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <!-- Hero Intro -->
+    <section class="models-hero">
+        <div class="models-hero-inner">
+            <h1 class="models-hero-title" data-aos="fade-up" data-aos-duration="500">
+                Our Models: The Intelligence Behind the Predictions
+            </h1>
+            <p class="models-hero-desc" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
+                At DiamondPriceX, we utilize cutting-edge machine learning algorithms to ensure accurate and reliable diamond price predictions. Our models are trained on a diverse dataset, analyzing key attributes such as carat, cut, color, clarity, and more to determine
+                market value. By leveraging advanced algorithms, we enhance prediction accuracy, helping users make well-informed decisions. Below, you'll find details on the algorithms powering our price estimation system.
+            </p>
+        </div>
+    </section>
+
+    <!-- Algorithms -->
+    <section class="models-section">
+        <div class="models-container">
+            <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="500">
+                <span class="models-section-label">Model Architecture</span>
+                <h2 class="models-section-title">Algorithms Used in Model Training</h2>
+            </div>
+
+            <div class="accordion saas-accordion" id="accordionExample" data-aos="fade-up" data-aos-duration="500">
+
+                <!-- 1 — Random Forest -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Random Forest Classifier
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">Random Forest Classifier</h4>
+                                    <p class="saas-model-desc">
+                                        Each tree in the forest is trained on a random subset of the data, reducing overfitting and improving generalization. This makes it a robust and versatile algorithm suitable for various healthcare
+                                        applications, including disease diagnosis, patient risk stratification, medical image analysis, drug discovery, and clinical decision support systems.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>High Accuracy:</b> By combining multiple decision trees, Random Forest often achieves superior accuracy compared to individual trees.</li>
+                                        <li><b>Robustness:</b> It is less prone to overfitting, making it reliable for complex datasets.</li>
+                                        <li><b>Feature Importance:</b> It provides insights into the relative importance of different features in the dataset.</li>
+                                        <li><b>Handles Missing Data:</b> It can handle missing data without requiring imputation.</li>
+                                        <li><b>Effective for both Numerical and Categorical Data:</b> It can work with both types of data.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/rfclsf.png" alt="Random Forest" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 — Logistic Regression -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-2" aria-expanded="false" aria-controls="c-2">
+                            Logistic Regression
+                        </button>
+                    </h2>
+                    <div id="c-2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">Logistic Regression</h4>
+                                    <p class="saas-model-desc">
+                                        Logistic Regression is a statistical method used to model the probability of a binary outcome. It's widely used in various fields, including healthcare, finance, and marketing. In the context
+                                        of healthcare, it can be used to predict the likelihood of a patient developing a specific disease, or the probability of a particular treatment being effective.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Probability Estimation:</b> It directly estimates the probability of a specific outcome.</li>
+                                        <li><b>Simplicity:</b> It's a relatively simple algorithm to understand and implement.</li>
+                                        <li><b>Interpretability:</b> The coefficients of the model can be interpreted to understand the impact of different factors.</li>
+                                        <li><b>Efficiency:</b> It's computationally efficient and can handle large datasets.</li>
+                                        <li><b>Wide Applicability:</b> It can be used for various classification tasks, including binary and multi-class classification.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/rfclsf.png" alt="Logistic Regression" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 — Decision Tree -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-3" aria-expanded="false" aria-controls="c-3">
+                            Decision Tree Classifier
+                        </button>
+                    </h2>
+                    <div id="c-3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">Decision Tree Classifier</h4>
+                                    <p class="saas-model-desc">
+                                        A Decision Tree is a tree-like model of decisions and their possible consequences, including chance event outcomes, resource costs, and utility. It is a non-parametric supervised learning method
+                                        used for both classification and regression tasks. The tree is constructed by splitting the data into subsets based on feature values. This process continues recursively until a stopping criterion is met.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Interpretability:</b> Decision trees are easily interpretable, making it easy to understand the decision-making process.</li>
+                                        <li><b>Handles both Categorical and Numerical Data:</b> It can handle both types of data without requiring feature scaling.</li>
+                                        <li><b>Non-Parametric:</b> It doesn't assume any underlying distribution of the data.</li>
+                                        <li><b>Robust to Outliers:</b> Decision trees are relatively robust to outliers.</li>
+                                        <li><b>Can Handle Missing Values:</b> It can handle missing values by using techniques like imputation or surrogate splits.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/dtclf.png" alt="Decision Tree" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 — AdaBoost -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-4" aria-expanded="false" aria-controls="c-4">
+                            AdaBoost Classifier
+                        </button>
+                    </h2>
+                    <div id="c-4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">AdaBoost Classifier</h4>
+                                    <p class="saas-model-desc">
+                                        AdaBoost, short for Adaptive Boosting, is a powerful ensemble learning technique that combines multiple weak learners to create a strong classifier. It works iteratively, focusing on misclassified
+                                        samples in each round. By assigning higher weights to these misclassified samples, subsequent models are encouraged to learn from their mistakes. This adaptive approach leads to improved overall performance.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Ensemble Learning:</b> Combines multiple weak learners to create a strong classifier.</li>
+                                        <li><b>Adaptive Learning:</b> Focuses on misclassified samples in each iteration.</li>
+                                        <li><b>Robustness:</b> Less sensitive to noise and outliers.</li>
+                                        <li><b>Versatility:</b> Can be used with various base learners, such as decision trees or neural networks.</li>
+                                        <li><b>Effective for Complex Datasets:</b> Can handle complex decision boundaries.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/adaclf.png" alt="AdaBoost" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 — Extra Trees -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-5" aria-expanded="false" aria-controls="c-5">
+                            Extra Trees Classifier
+                        </button>
+                    </h2>
+                    <div id="c-5" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">Extra Trees Classifier</h4>
+                                    <p class="saas-model-desc">
+                                        Extra Trees, or Extremely Randomized Trees, is an ensemble learning method similar to Random Forest. However, it introduces additional randomness in the tree construction process. Instead of selecting
+                                        the best split point for each node, Extra Trees randomly selects a split point from a subset of features. This increased randomness leads to a more diverse ensemble and can improve performance, especially in high-dimensional
+                                        datasets.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Ensemble Learning:</b> Combines multiple decision trees to make predictions.</li>
+                                        <li><b>Randomized Splits:</b> Introduces randomness in the tree construction process.</li>
+                                        <li><b>Reduced Overfitting:</b> The randomness helps to reduce overfitting.</li>
+                                        <li><b>Faster Training:</b> Often trains faster than Random Forest due to its simplified decision-making process.</li>
+                                        <li><b>Effective for High-Dimensional Data:</b> Can handle datasets with many features.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/etclf.png" alt="Extra Trees" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 — KNN -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-6" aria-expanded="false" aria-controls="c-6">
+                            K-Nearest Neighbors (KNN) Classifier
+                        </button>
+                    </h2>
+                    <div id="c-6" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">K-Nearest Neighbors (KNN) Classifier</h4>
+                                    <p class="saas-model-desc">
+                                        K-Nearest Neighbors is a simple yet effective classification algorithm. It classifies a new data point based on the majority vote of its k nearest neighbors. The distance between data points is
+                                        calculated using metrics like Euclidean distance or Manhattan distance.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Simple and Intuitive:</b> Easy to understand and implement.</li>
+                                        <li><b>Non-Parametric:</b> Doesn't assume any underlying data distribution. Reliable for complex datasets.</li>
+                                        <li><b>Versatile:</b> Can be used for both classification and regression tasks.</li>
+                                        <li><b>Sensitive to Noise:</b> Can be sensitive to noisy data, especially with low values of k.</li>
+                                        <li><b>Computational Cost:</b> Can be computationally expensive for large datasets, especially during the prediction phase.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/knnclf.jpg" alt="KNN" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 — Gaussian Naive Bayes -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-7" aria-expanded="false" aria-controls="c-7">
+                            Gaussian Naive Bayes
+                        </button>
+                    </h2>
+                    <div id="c-7" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">Gaussian Naive Bayes</h4>
+                                    <p class="saas-model-desc">
+                                        Gaussian Naive Bayes is a probabilistic classification algorithm that assumes features follow a Gaussian distribution. It's particularly useful for continuous numerical data. It calculates the
+                                        probability of a data point belonging to a particular class based on Bayes' theorem and the assumption of feature independence.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Probabilistic Approach:</b> Uses probability theory to make predictions.</li>
+                                        <li><b>Gaussian Assumption:</b> Assumes features follow a Gaussian distribution.</li>
+                                        <li><b>Feature Independence:</b> Assumes features are independent of each other.</li>
+                                        <li><b>Simple and Efficient:</b> Relatively simple to implement and computationally efficient.</li>
+                                        <li><b>Effective for High-Dimensional Data:</b> Can handle datasets with many features.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/gnb.png" alt="Gaussian Naive Bayes" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 — SVM -->
+                <div class="accordion-item saas-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button saas-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-8" aria-expanded="false" aria-controls="c-8">
+                            Support Vector Machine (SVM)
+                        </button>
+                    </h2>
+                    <div id="c-8" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body saas-accordion-body">
+                            <div class="row align-items-center gy-4">
+                                <div class="col-lg-7">
+                                    <h4 class="saas-model-name">Support Vector Machine (SVM)</h4>
+                                    <p class="saas-model-desc">
+                                        Support Vector Machine (SVM) is a powerful supervised machine learning algorithm used for both classification and regression tasks. It aims to find the optimal hyperplane that separates different
+                                        classes of data points with the maximum margin. SVMs are particularly effective for high-dimensional data and can handle complex decision boundaries.
+                                    </p>
+                                    <p class="saas-model-features-label">Key Features</p>
+                                    <ul class="saas-model-features">
+                                        <li><b>Margin Maximization:</b> SVMs focus on finding the hyperplane that maximizes the margin between different classes.</li>
+                                        <li><b>Kernel Trick:</b> SVMs can handle non-linearly separable data using kernel functions that map data to higher-dimensional spaces.</li>
+                                        <li><b>Effective for High-Dimensional Data:</b> SVMs can handle high-dimensional datasets without overfitting.</li>
+                                        <li><b>Robust to Outliers:</b> SVMs are relatively robust to outliers.</li>
+                                        <li><b>Versatile:</b> Can be used for both classification and regression tasks.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="saas-model-img-card">
+                                        <img src="../static/images/model/svm.jpg" alt="SVM" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

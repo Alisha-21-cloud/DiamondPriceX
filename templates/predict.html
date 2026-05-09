@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict | DiamondPriceX</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="predict-section">
+        <div class="predict-container">
+            <div class="predict-card">
+
+                <!-- Header -->
+                <div class="predict-header">
+                    <h1 class="predict-title">Diamond Price Prediction</h1>
+                    <p class="predict-subtitle">Enter the diamond characteristics below to generate an AI-powered valuation.</p>
+                </div>
+
+                <form action="/output" method="post" id="form-0">
+
+                    <!-- Section 1 — Basic Quality -->
+                    <div class="predict-group">
+                        <h6 class="predict-group-label">Basic Quality</h6>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-3">
+                                <label for="Carat" class="predict-label">Carat</label>
+                                <input type="text" name="Carat" id="Carat" class="form-control predict-input">
+                                <p class="predict-hint">The weight of the diamond.</p>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <label for="Cut" class="predict-label">Cut</label>
+                                <select name="Cut" id="Cut" class="form-select predict-input">
+                                    <option value="0">Ideal</option>
+                                    <option value="1">Premium</option>
+                                    <option value="2">Very Good</option>
+                                    <option value="3">Good</option>
+                                    <option value="4">Fair</option>
+                                </select>
+                                <p class="predict-hint">Quality of the cut — affects light reflection.</p>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <label for="Color" class="predict-label">Color</label>
+                                <select name="Color" id="Color" class="form-select predict-input">
+                                    <option value="4">D</option>
+                                    <option value="1">E</option>
+                                    <option value="2">F</option>
+                                    <option value="0">G</option>
+                                    <option value="3">H</option>
+                                    <option value="5">I</option>
+                                    <option value="6">J</option>
+                                </select>
+                                <p class="predict-hint">D (colorless) to J (noticeable tint).</p>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <label for="Clarity" class="predict-label">Clarity</label>
+                                <select name="Clarity" id="Clarity" class="form-select predict-input">
+                                    <option value="6">IF</option>
+                                    <option value="5">VVS1</option>
+                                    <option value="4">VVS2</option>
+                                    <option value="3">VS1</option>
+                                    <option value="1">VS2</option>
+                                    <option value="0">SI1</option>
+                                    <option value="2">SI2</option>
+                                    <option value="7">I1</option>
+                                </select>
+                                <p class="predict-hint">IF (best) to I1 (lowest) — measures inclusions &amp; blemishes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2 — Proportions -->
+                    <div class="predict-group">
+                        <h6 class="predict-group-label">Proportions</h6>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="Depth" class="predict-label">Depth (%)</label>
+                                <input type="text" name="Depth" id="Depth" class="form-control predict-input">
+                                <p class="predict-hint">Height relative to width, as a percentage.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Table" class="predict-label">Table (%)</label>
+                                <input type="text" name="Table" id="Table" class="form-control predict-input">
+                                <p class="predict-hint">Top facet width relative to total width.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3 — Physical Dimensions -->
+                    <div class="predict-group">
+                        <h6 class="predict-group-label">Physical Dimensions</h6>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <label for="X" class="predict-label">X — Length (mm)</label>
+                                <input type="text" name="X" id="X" class="form-control predict-input">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Y" class="predict-label">Y — Width (mm)</label>
+                                <input type="text" name="Y" id="Y" class="form-control predict-input">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Z" class="predict-label">Z — Depth (mm)</label>
+                                <input type="text" name="Z" id="Z" class="form-control predict-input">
+                            </div>
+                        </div>
+                        <p class="predict-hint mt-3">Actual physical dimensions of the diamond in millimeters.</p>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="text-center pt-2">
+                        <button class="btn predict-btn" type="submit">Predict Price</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>
