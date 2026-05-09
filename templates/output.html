@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="result-section">
+        <div class="result-container">
+
+            <!-- Prediction Highlight -->
+            <div class="result-prediction-card">
+                <span class="result-prediction-label">Predicted Market Value</span>
+                <h2 class="result-prediction-value">${{ output }}</h2>
+                <p class="result-prediction-note">Based on the provided diamond characteristics.</p>
+            </div>
+
+            <!-- Diamond Details -->
+            <div class="result-details">
+                <h3 class="result-details-heading">Diamond Details</h3>
+                <div class="row g-3">
+                    {% for item in profile %}
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="result-detail-card">
+                            <p class="result-detail-text">{{ item }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Back action -->
+            <div class="text-center mt-5">
+                <a href="/predict" class="btn predict-btn">Predict Another</a>
+            </div>
+
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>
