@@ -101,13 +101,12 @@ The following models were trained and evaluated in the Jupyter notebook:
 
 The application also presents classification-based evaluation metrics for price-range categorization:
 
-| # | Algorithm | Accuracy | Precision | Recall | F1-Score |
-|---|-----------|----------|-----------|--------|----------|
-| 1 | Logistic Regression | 88.40% | 0.86 | 0.86 | 0.86 |
-| 2 | KNeighbors Classifier | 85.85% | 0.86 | 0.86 | 0.86 ||
-| 3 | DecisionTree Classifier | 79.29% | 0.79 | 0.79 | 0.79 |
-| 4 | RandomForest Classifier | 88.40% | 0.86 | 0.86 | 0.86 |
-
+| # | Algorithm | Type | Train R² Score | Test R² Score |
+|---|-----------|------|---------------|---------------|
+| 1 | Decision Tree Regressor | Regression | 1.00 (100%) | ~0.96 (96%) |
+| 2 | Random Forest Regressor ⭐ Best | Regression | ~0.98 (98%) | ~0.96 (96%) |
+| 3 | K-Nearest Neighbors Classifier | Classification | ~0.89 (89%) | ~0.76 (76%) |
+| 4 | Linear Regression | Regression | ~0.92 (92%) | ~0.91 (91%) |
 ---
 
 ## 4. Model Selection & Final Model
