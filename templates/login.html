@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Register</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="auth-section">
+        <div class="auth-center">
+
+            <!-- Login Form -->
+            <div id="login-form" class="auth-card">
+                <h2 class="auth-card-heading">Welcome back</h2>
+                <p class="auth-subtitle">Sign in to your DiamondPriceX account</p>
+
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="auth-label">Username</label>
+                        <input required type="text" class="form-control auth-input" id="username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="auth-label">Password</label>
+                        <input required type="password" class="form-control auth-input" id="password" name="password">
+                    </div>
+                    {% if loginError %}
+                    <div class="mb-2">
+                        <p class="auth-error">{{ loginError }}</p>
+                    </div>
+                    {% endif %}
+                    <button type="submit" class="btn auth-btn-primary w-100">Login</button>
+                </form>
+
+                <p class="auth-toggle">
+                    Don't have an account?
+                    <a href="javascript:void(0)" onclick="showRegister()">Register</a>
+                </p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="auth-card auth-hidden">
+                <h2 class="auth-card-heading">Create an account</h2>
+                <p class="auth-subtitle">Get started with DiamondPriceX for free</p>
+
+                <form action="/register" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="auth-label">Username</label>
+                        <input required type="text" class="form-control auth-input" name="name" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email2" class="auth-label">Email</label>
+                        <input required type="email" class="form-control auth-input" name="email" id="email2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPass" class="auth-label">Create new password</label>
+                        <input required type="password" class="form-control auth-input" name="newPass" id="newPass">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confPass" class="auth-label">Confirm password</label>
+                        <input required type="password" class="form-control auth-input" name="confPass" id="confPass">
+                    </div>
+                    {% if regError %}
+                    <div class="mb-2">
+                        <p class="auth-error">{{ regError }}</p>
+                    </div>
+                    {% endif %}
+                    <button type="submit" class="btn auth-btn-primary w-100">Register</button>
+                </form>
+
+                <p class="auth-toggle">
+                    Already have an account?
+                    <a href="javascript:void(0)" onclick="showLogin()">Login</a>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <script>
+        function showLogin() {
+            document.getElementById('register-form').classList.add('auth-hidden');
+            document.getElementById('login-form').classList.remove('auth-hidden');
+        }
+        function showRegister() {
+            document.getElementById('login-form').classList.add('auth-hidden');
+            document.getElementById('register-form').classList.remove('auth-hidden');
+        }
+
+        {% if regError %}
+        document.addEventListener("DOMContentLoaded", function () {
+            showRegister();
+        });
+        {% endif %}
+    </script>
+
+</body>
+
+</html>

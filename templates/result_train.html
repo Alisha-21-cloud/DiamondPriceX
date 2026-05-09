@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Training Result</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="results-section">
+        <div class="results-container">
+
+            <!-- Header -->
+            <div class="results-header" data-aos="fade-up">
+                <h1 class="results-title">Model Training Performance</h1>
+                <p class="results-subtitle">Evaluation metrics across trained algorithms.</p>
+            </div>
+
+            <!-- Metric Summary Cards -->
+            <div class="results-stats" data-aos="fade-up" data-aos-delay="100">
+                <div class="results-stat-card">
+                    <span class="results-stat-value">97.57%</span>
+                    <span class="results-stat-label">Best Train R² Score</span>
+                    <span class="results-stat-model">Random Forest Regressor</span>
+                </div>
+                <div class="results-stat-card">
+                    <span class="results-stat-value">95.82%</span>
+                    <span class="results-stat-label">Best Test R² Score</span>
+                    <span class="results-stat-model">Random Forest Regressor</span>
+                </div>
+                <div class="results-stat-card">
+                    <span class="results-stat-value">Random Forest</span>
+                    <span class="results-stat-label">Saved Model</span>
+                    <span class="results-stat-model">Diamond_Price.pkl</span>
+                </div>
+            </div>
+
+            <!-- Table Card -->
+            <div class="results-card" data-aos="fade-up" data-aos-delay="200">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th class="col-num">#</th>
+                            <th class="col-algo">Algorithm</th>
+                            <th class="col-metric">Type</th>
+                            <th class="col-metric">Train R² Score</th>
+                            <th class="col-metric">Test R² Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-num">1</td>
+                            <td class="col-algo">Decision Tree Regressor</td>
+                            <td class="col-metric">Regression</td>
+                            <td class="col-metric">1.00 (100%)</td>
+                            <td class="col-metric">~0.96 (96%)</td>
+                        </tr>
+                        <tr class="best-model">
+                            <td class="col-num">2</td>
+                            <td class="col-algo">Random Forest Regressor <span class="model-badge">Best</span></td>
+                            <td class="col-metric">Regression</td>
+                            <td class="col-metric">~0.98 (98%)</td>
+                            <td class="col-metric">~0.96 (96%)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-num">3</td>
+                            <td class="col-algo">K-Nearest Neighbors Classifier</td>
+                            <td class="col-metric">Classification</td>
+                            <td class="col-metric">~0.89 (89%)</td>
+                            <td class="col-metric">~0.76 (76%)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-num">4</td>
+                            <td class="col-algo">Linear Regression</td>
+                            <td class="col-metric">Regression</td>
+                            <td class="col-metric">~0.92 (92%)</td>
+                            <td class="col-metric">~0.91 (91%)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>
