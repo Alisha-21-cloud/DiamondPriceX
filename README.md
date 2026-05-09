@@ -410,7 +410,7 @@ Built by the **DiamondPriceX Team**:
 | Name | Role |
 |------|------|
 | **Syed Ahmad Alisha** | Model Training |
-
+| **Srinu pitta** | frontend design |
 ---
 
 ## 15. License
