@@ -16,7 +16,7 @@ ENV/
 # *.ipynb
 
 # ML Model / Pickle files
-*.pkl
+# *.pkl
 *.pickle
 *.joblib
 *.h5
