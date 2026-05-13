@@ -226,13 +226,33 @@ All pages include responsive breakpoints at `991.98px` and `575.98px`, adjusting
 ```
 DiamondPriceX/
 │
+├── .github/
+│   └── workflows/
+│       └── docker-publish.yml      # GitHub Actions CI/CD pipeline for Docker publishing
+│
 ├── app.py                          # Flask application entry point
 ├── profiler.py                     # Diamond profile generator (label decoder)
 ├── req.txt                         # Python dependencies
 ├── README.md                       # Project documentation
+├── Dockerfile                      # Docker containerization configuration
+├── .dockerignore                   # Docker build exclusions
+├── .gitignore                      # Git ignore rules
+├── .gitattributes                  # Git attributes configuration
+├── .python-version                 # Python version specification (for pyenv)
 │
 ├── instance/
 │   └── Model.db                    # SQLite database (user accounts)
+│
+├── screenshots/
+│   ├── about.png                   # About page screenshot
+│   ├── home.png                    # Home page screenshot
+│   ├── home1.png                   # Home page screenshot (variant)
+│   ├── login.png                   # Login page screenshot
+│   ├── models.png                  # Models information page screenshot
+│   ├── predict.png                 # Prediction form screenshot
+│   ├── result.png                  # Prediction result screenshot
+│   ├── training_results.png        # Training results page screenshot
+│   └── desktop.ini                 # Windows folder metadata
 │
 ├── static/
 │   ├── css/
@@ -259,7 +279,9 @@ DiamondPriceX/
 │   ├── result_train.html           # Training results comparison
 │   └── login.html                  # Login & registration page
 │
-└── __pycache__/                    # Python bytecode cache
+├── .venv/                          # Python virtual environment (auto-generated)
+├── __pycache__/                    # Python bytecode cache (auto-generated)
+└── .git/                           # Git repository metadata (auto-generated)
 ```
 
 ---
