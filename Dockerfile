@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r req.txt
 COPY . .
  
 # Create instance directory for SQLite database
-RUN mkdir -p instance
+RUN mkdir -p instance && chmod -R 777 instance
  
 # Expose port 5000
 EXPOSE 5000
