@@ -474,6 +474,297 @@ SOFTWARE.
 ```
 
 ---
+## 16. Deployment
+
+This section documents every deployment target, file, and CI/CD pipeline added to DiamondPriceX across all environments.
+
+---
+
+### 16.1 Deployment Overview
+
+| Platform | Type | Status | URL |
+|---|---|---|---|
+| **Render** | Live Web App | ✅ Active | https://diamondpricex.onrender.com |
+| **GitHub Packages** | Docker Container Registry | ✅ Active | `ghcr.io/alisha-21-cloud/diamondpricex:latest` |
+| **Hugging Face Spaces** | Docker Space | ✅ Active | https://huggingface.co/spaces/Alisha-21-cloud/DiamondPriceX |
+
+---
+
+### 16.2 Files Added for Deployment
+
+The following files were added to the repository specifically for containerization, CI/CD, and deployment:
+
+```
+DiamondPriceX/
+├── Dockerfile                            # Docker container definition
+├── .dockerignore                         # Files excluded from Docker image
+└── .github/
+    └── workflows/
+        └── docker-publish.yml            # GitHub Actions CI/CD pipeline
+```
+
+---
+
+### 16.3 Dockerfile
+
+**Location:** `Dockerfile` (repo root)
+
+The Dockerfile defines how the application is containerized. It uses Python 3.13 slim, installs all dependencies from `req.txt`, creates the SQLite instance directory with correct permissions, and starts the app using Gunicorn.
+
+```dockerfile
+# Use official Python 3.13 slim image
+FROM python:3.13-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements first (for Docker layer caching)
+COPY req.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r req.txt
+
+# Copy the rest of the application
+COPY . .
+
+# Create instance directory for SQLite database
+RUN mkdir -p instance && chmod -R 777 instance
+
+# Expose port 5000
+EXPOSE 5000
+
+# Run with gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "app:app"]
+```
+
+**Key decisions:**
+- `python:3.13-slim` — matches the Python version used in local development and Render deployment
+- `chmod -R 777 instance` — required for Hugging Face Spaces which runs containers as a non-root user; allows SQLite to create `Model.db`
+- `gunicorn` with 2 workers — production-grade WSGI server; already present in `req.txt`
+- Layer caching — `req.txt` is copied and installed before the rest of the app so Docker reuses the dependency layer on subsequent builds
+
+---
+
+### 16.4 .dockerignore
+
+**Location:** `.dockerignore` (repo root)
+
+Excludes unnecessary files from the Docker image to keep it clean, fast to build, and small in size.
+
+```
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Screenshots
+screenshots/
+
+# Instance folder (DB created fresh at runtime)
+instance/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# README
+README.md
+```
+
+---
+
+### 16.5 GitHub Actions CI/CD Pipeline
+
+**Location:** `.github/workflows/docker-publish.yml`
+
+This workflow automatically builds the Docker image and publishes it to GitHub Container Registry (GHCR) every time a new release is published on GitHub. No manual steps required.
+
+```yaml
+name: Publish Docker Image to GitHub Packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract version tag
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/alisha-21-cloud/diamondpricex
+          tags: |
+            type=semver,pattern={{version}}
+            type=raw,value=latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+```
+
+**How it works:**
+1. Triggered automatically when a GitHub Release is published (e.g. `v1.0.0`, `v1.0.1`)
+2. Checks out the repository code
+3. Logs into GitHub Container Registry using the built-in `GITHUB_TOKEN` — no manual secrets needed
+4. Extracts the version tag from the release (e.g. `v1.0.2` → image tag `1.0.2` and `latest`)
+5. Builds the Docker image using the `Dockerfile` in the repo root
+6. Pushes the image to `ghcr.io/alisha-21-cloud/diamondpricex`
+
+---
+
+### 16.6 GitHub Packages (Container Registry)
+
+The Docker image is published to GitHub Container Registry (GHCR) and is publicly available.
+
+**Package URL:** https://github.com/users/Alisha-21-cloud/packages/container/package/diamondpricex
+
+**Image:** `ghcr.io/alisha-21-cloud/diamondpricex:latest`
+
+#### Pull and Run the Docker Image
+
+Anyone can run DiamondPriceX locally using Docker — no Python, pip, or setup required:
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/alisha-21-cloud/diamondpricex:latest
+
+# Run the container
+docker run -p 5000:5000 ghcr.io/alisha-21-cloud/diamondpricex:latest
+```
+
+Then open your browser and go to:
+```
+http://localhost:5000
+```
+
+#### Run a specific version
+
+```bash
+# Run a specific release version
+docker pull ghcr.io/alisha-21-cloud/diamondpricex:1.0.2
+docker run -p 5000:5000 ghcr.io/alisha-21-cloud/diamondpricex:1.0.2
+```
+
+#### Available Tags
+
+| Tag | Description |
+|---|---|
+| `latest` | Always points to the most recent published release |
+| `1.0.0` | Initial release |
+| `1.1.0` | Docker support added |
+| `1.1.1` | Latest commit sync + CI/CD |
+
+---
+
+### 16.7 Render Deployment
+
+**Live URL:** https://diamondpricex.onrender.com
+
+DiamondPriceX is deployed on [Render](https://render.com) as a web service. Render automatically detects the `gunicorn` start command from the repository and runs the Flask app.
+
+**Configuration used on Render:**
+| Setting | Value |
+|---|---|
+| **Environment** | Python |
+| **Build Command** | `pip install -r req.txt` |
+| **Start Command** | `gunicorn --bind 0.0.0.0:$PORT app:app` |
+| **Python Version** | 3.13 |
+| **Instance Type** | Free |
+
+---
+
+### 16.8 Hugging Face Spaces Deployment
+
+DiamondPriceX is also deployable on [Hugging Face Spaces](https://huggingface.co/spaces) using the Docker SDK.
+
+**Space URL:** `https://YOUR_HF_USERNAME-diamondpricex.hf.space`
+
+#### Required: Add HF metadata to `README.md`
+
+The following YAML block must appear at the very top of `README.md` for Hugging Face to recognize the Space configuration:
+
+```yaml
+---
+title: DiamondPriceX
+emoji: 💎
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 5000
+pinned: false
+---
+```
+
+#### Push to Hugging Face from your existing GitHub repo
+
+Since the repo already uses Git LFS for the 300MB `Diamond_Price.pkl` model, simply add Hugging Face as a second git remote and push:
+
+```bash
+# Add Hugging Face as a remote
+git remote add huggingface https://huggingface.co/spaces/YOUR_HF_USERNAME/DiamondPriceX
+
+# Push repo including LFS files
+git push huggingface main
+```
+
+> When prompted for a password, use your **Hugging Face Access Token** from:
+> https://huggingface.co/settings/tokens
+
+#### Git LFS Note
+
+The trained model `static/Models/Diamond_Price.pkl` is **~300MB** and is tracked using Git LFS (already configured in `.gitattributes`). Hugging Face Spaces supports Git LFS natively, so no additional setup is required.
+
+---
+
+### 16.9 Release History
+
+| Version | Date | Description |
+|---|---|---|
+| `v1.0.0` | May 2026 | Initial public release — full-stack Flask app with ML model |
+| `v1.0.1` | May 2026 | Docker support added — `Dockerfile`, `.dockerignore`, GitHub Actions CI/CD |
+| `v1.0.2` | May 2026 | Latest commit sync — project structure docs, screenshots, CI/CD confirmed |
+
+All releases are available at:
+👉 https://github.com/Alisha-21-cloud/DiamondPriceX/releases
 
 <div align="center">
 
