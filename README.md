@@ -1,3 +1,13 @@
+---
+title: DiamondPriceX
+emoji: 💎
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 5000
+pinned: false
+---
+
 <div align="center">
 
 # DiamondPriceX
