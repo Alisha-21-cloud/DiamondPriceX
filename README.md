@@ -442,6 +442,7 @@ Built by the **DiamondPriceX Team**:
 |------|------|
 | **Muthinti Siri** | Data Collection and Exploratory Data Analysis (EDA) |
 | **Syed Ahmad Alisha** | Model Training and Model Testing |
+| **Golamari Vivekananda Reddy** | Backend and Database |
 | **Srinu pitta** | Frontend Design |
 ---
 
