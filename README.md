@@ -716,7 +716,7 @@ DiamondPriceX is deployed on [Render](https://render.com) as a web service. Rend
 
 DiamondPriceX is also deployable on [Hugging Face Spaces](https://huggingface.co/spaces) using the Docker SDK.
 
-**Space URL:** `https://YOUR_HF_USERNAME-diamondpricex.hf.space`
+**Space URL:** https://huggingface.co/spaces/Alisha-21-cloud/DiamondPriceX
 
 #### Required: Add HF metadata to `README.md`
 
@@ -760,8 +760,8 @@ The trained model `static/Models/Diamond_Price.pkl` is **~300MB** and is tracked
 | Version | Date | Description |
 |---|---|---|
 | `v1.0.0` | May 2026 | Initial public release — full-stack Flask app with ML model |
-| `v1.0.1` | May 2026 | Docker support added — `Dockerfile`, `.dockerignore`, GitHub Actions CI/CD |
-| `v1.0.2` | May 2026 | Latest commit sync — project structure docs, screenshots, CI/CD confirmed |
+| `v1.1.0` | May 2026 | Docker support added — `Dockerfile`, `.dockerignore`, GitHub Actions CI/CD |
+| `v1.1.1` | May 2026 | Latest commit sync — project structure docs, screenshots, CI/CD confirmed |
 
 All releases are available at:
 👉 https://github.com/Alisha-21-cloud/DiamondPriceX/releases
