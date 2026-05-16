@@ -444,6 +444,7 @@ Built by the **DiamondPriceX Team**:
 | **Syed Ahmad Alisha** | Model Training and Model Testing |
 | **Golamari Vivekananda Reddy** | Backend and Database |
 | **Srinu pitta** | Frontend Design |
+| **Dolla Tarun** | Architect Design |
 ---
 
 ## 15. License
